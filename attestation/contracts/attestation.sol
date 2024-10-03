@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract HealthRecordAttestation {
+contract HealthRecordAttestation  {
 
     // Structure to hold attestation data
     struct Attestation {
@@ -41,7 +41,7 @@ contract HealthRecordAttestation {
 
         // Store the attestation in the patient's record
         patientAttestations[_patient].push(newAttestation);
-
+        
         // Emit event for attestation creation
         emit AttestationCreated(_patient, msg.sender, _recordHash, _recordType);
     }
