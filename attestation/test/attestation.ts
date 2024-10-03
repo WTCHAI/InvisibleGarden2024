@@ -1,14 +1,22 @@
-import { expect } from "chai";
 import { ethers } from "hardhat";
+import { Signer } from "ethers";
+import { expect } from "chai";
 
-describe("HealthRecordAttestation", function () {
-  console.log("Test");
-  it("Deployment should assign the total supply of tokens to the owner", async function () {
-    const [ owner ] = await ethers.getSigners();    
-    console.log("Owner address: ", owner.address);
-    const contract = await ethers.deployContract("HealthRecordAttestation");
+import { HealthRecordAttestation } from './../typechain-types/attestation.sol/HealthRecordAttestation';
 
-    // const ownerBalance = await hardhatToken.balanceOf(owner.address);
-    // expect(await hardhatToken.totalSupply()).to.equal(ownerBalance);
-  });
-});
+describe("HealthRecordAttestation", async () => {
+    // Initialize user wallet address globally
+    let patient1 : Signer , patient2 : Signer, provider1 : Signer, provider2 : Signer
+    let healthRecordAttestationContract: HealthRecordAttestation
+
+    beforeEach(async () => {
+        [patient1,patient2,provider1,provider2] = await ethers.getSigners()  
+        // Deploy contract
+        const HealthRecordAttestationContract = await ethers.getContractFactory('HealthRecordAttestation',patient2)
+        healthRecordAttestationContract = await HealthRecordAttestationContract.deploy()
+
+    })
+    it("Should return the new greeting once it's changed", async function () {  
+
+    })
+})
