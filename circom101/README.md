@@ -87,4 +87,9 @@ Require Private input to generate inside folder Power_js
 
     snarkjs groth16 prove Power_0001.zkey witness.wtns proof.json public.json
 
+    Testing verify 
     snarkjs groth16 verify verification_key.json public.json proof.json
+
+
+9. Generating verifier contract 
+    snarkjs zkey export solidityverifier Power_0001.zkey verifier.sol
