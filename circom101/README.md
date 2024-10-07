@@ -15,7 +15,7 @@ Require Private input to generate inside folder Power_js
 3. Generating proof Snark & power of tau
 
     snarkjs powersoftau new bn128 12 pot12_0000.ptau -v
-    
+
         [DEBUG] snarkJS: Calculating First Challenge Hash
         [DEBUG] snarkJS: Calculate Initial Hash: tauG1
         [DEBUG] snarkJS: Calculate Initial Hash: tauG2
@@ -31,4 +31,35 @@ Require Private input to generate inside folder Power_js
                         a40b9195 9ea38ef9 f5f6a303 3b886516
                         0710d067 c09d0961 5f928ea5 17bcdf49
                         ad75abd2 c8340b40 0e3b18e9 68b4ffef
+
+4. Contribute ceremony 
+    snarkjs powersoftau contribute pot12_0000.ptau pot12_0001.ptau --name="First contribution" -v
+        Enter a random text. (Entropy): text 
+        [DEBUG] snarkJS: Calculating First Challenge Hash
+        [DEBUG] snarkJS: Calculate Initial Hash: tauG1
+        [DEBUG] snarkJS: Calculate Initial Hash: tauG2
+        [DEBUG] snarkJS: Calculate Initial Hash: alphaTauG1
+        [DEBUG] snarkJS: Calculate Initial Hash: betaTauG1
+        [DEBUG] snarkJS: processing: tauG1: 0/8191
+        [DEBUG] snarkJS: processing: tauG2: 0/4096
+        [DEBUG] snarkJS: processing: alphaTauG1: 0/4096
+        [DEBUG] snarkJS: processing: betaTauG1: 0/4096
+        [DEBUG] snarkJS: processing: betaTauG2: 0/1
+        [INFO]  snarkJS: Contribution Response Hash imported: 
+                        c3cb82c0 94595c82 9a5384ac 7dd89073
+                        618e561e a849f59f 62fb3f47 b13cfe48
+                        9634acdb df03d141 7d6e9372 8ab3797a
+                        2e55765b ded493db 0584f7cc 7dcaff21
+        [INFO]  snarkJS: Next Challenge Hash: 
+                        489587b7 8b01fdc5 0dd1bd4c 4153e96d
+                        19650b61 38221c6b ba108c4c dce624a2
+                        559377f2 ab6c589f 57391aed 5ca94f24
+                        d641bbda b26a8728 807ac14b 7bcadae7
+
+
+5. Circuit Specific generating .zkey contain proving & verification keys 
+
+    snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v
+
+    snarkjs groth16 setup Power.r1cs pot12_final.ptau Power_0000.zkey
 
