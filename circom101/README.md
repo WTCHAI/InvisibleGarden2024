@@ -61,5 +61,30 @@ Require Private input to generate inside folder Power_js
 
     snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v
 
+
     snarkjs groth16 setup Power.r1cs pot12_final.ptau Power_0000.zkey
 
+6. Contribute Phase two ceremony
+    snarkjs zkey contribute Power_0000.zkey Power_0001.zkey --name="1st Contributor Name" -v
+
+        Enter a random text. (Entropy): text
+        [DEBUG] snarkJS: Applying key: H Section: 0/4
+        [INFO]  snarkJS: Circuit Hash: 
+                        e54996bc 128b09d9 95697034 6974d798
+                        ff19511f 568b5060 f47d3020 e0436a9f
+                        5f695e64 3f2a2958 76193417 13b9b7ed
+                        77dda0fc 58e6a056 9758c45c 5f02d6c5
+        [INFO]  snarkJS: Contribution Hash: 
+                        a11c5fa2 07545d3d b308a140 7d532d26
+                        e199e03c 8772bb0d 796fcecc 95081db6
+                        7b4efad1 2506bb67 6ce94f04 fea3e7be
+                        0a62c320 98a5917d 32f228b4 c69022ea
+
+7. Export verification key 
+    snarkjs zkey export verificationkey Power_0001.zkey verification_key.json
+
+8. Generate & Verifying Proof
+
+    snarkjs groth16 prove Power_0001.zkey witness.wtns proof.json public.json
+
+    snarkjs groth16 verify verification_key.json public.json proof.json

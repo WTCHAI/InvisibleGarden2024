@@ -2,11 +2,11 @@ pragma circom 2.0.0;
 
 /*This circuit template checks that c is the multiplication of a and b.*/  
 
-template Power () {  
+template Power (n) {  
 
    // Declaration of signals.  
    signal input a;  
-   signal input b;  
+   // signal public input i;
    signal output c;
 
    // Set temp to 1 initially.
@@ -15,11 +15,11 @@ template Power () {
    signal i ; 
    i <== 1 ;
 
-   for (var i = 0 ; i < b ; i++) {
+   for (var j = 0 ; j < n; j++) {
       i = i * a ;
    }
 
    c <== i ;
 }
 
-component main = Power();
+component main = Power(3);
