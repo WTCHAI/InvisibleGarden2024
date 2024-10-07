@@ -11,15 +11,14 @@ template Power (n) {
 
    // Set temp to 1 initially.
    // Constraints.  
+   signal temp[n+1] ; 
+   temp[0] <== 1 ; 
 
-   signal i ; 
-   i <== 1 ;
-
-   for (var j = 0 ; j < n; j++) {
-      i = i * a ;
+   for (var i = 1; i <= n; i++) {
+      temp[i] <== temp[i-1] * a;
    }
 
-   c <== i ;
+   c <== temp[n] ;
 }
 
 component main = Power(3);
