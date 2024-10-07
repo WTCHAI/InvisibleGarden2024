@@ -93,3 +93,8 @@ Require Private input to generate inside folder Power_js
 
 9. Generating verifier contract 
     snarkjs zkey export solidityverifier Power_0001.zkey verifier.sol
+
+
+10. The Verifier has a view function called verifyProof that returns TRUE if and only if the proof and the inputs are valid. To facilitate the call, you can use snarkJS to generate the parameters of the call by typing:
+
+snarkjs generatecall
